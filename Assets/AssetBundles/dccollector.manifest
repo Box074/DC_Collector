@@ -1,0 +1,80 @@
+ManifestFileVersion: 0
+CRC: 736431278
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5c25a1cfdd4c8953f0cfdcd31acda410
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9d2b21b153803f83fe7c354fa36ff8ff
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 60
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 11d932fb2a64be74a9566271e7f0ded5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: c63080782607aeb45843aa0e678187ba, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 643d53af437ece647a336c4633dd402f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d963712ced7297440b71e1df7aab062d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d3065fec2ab146447982f2a4095f05f0, type: 3}
+- Class: 114
+  Script: {fileID: -463996770, guid: efb950b54ceb2a3459628d704c691a47, type: 3}
+- Class: 114
+  Script: {fileID: -2035162489, guid: efb950b54ceb2a3459628d704c691a47, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a766486c5cd639d46916faf5c5a0f74f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dfa3c820ac6e42e42b4dff421c462763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 62890e8a2a92e3f42ba02b7d464fce3f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 35a7487c03fdedc4dabc910e3d025708, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2fa41966eeefd5349ab9eceb7b455232, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d819901be31870d4794044778b94554a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3df6400b3bb8f34499ecbe4c639f6d54, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: cf27e2ff50872d746a1af3609717e34b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8d2879a8484657b4c94ad7a1a920b4c3, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Texture2D/Effect.spriteatlas
+- Assets/SpriteMat.mat
+- Assets/Texture2D/Collector.spriteatlas
+- Assets/Texture2D/CollectorIcon.png
+- Assets/Collector.prefab
+- Assets/HKCollectorScene.prefab
+- Assets/Fireball.prefab
+- Assets/PhaseTeleportPoint.prefab
+Dependencies: []
