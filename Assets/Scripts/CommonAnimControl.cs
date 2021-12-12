@@ -5,11 +5,14 @@ using UnityEngine.U2D;
 
 public class CommonAnimControl : MonoBehaviour
 {
+    public Material rendererMat;
     public SpriteAtlas atlas;
-    public SpriteRenderer render;
+    public SpriteRenderer[] renderers;
+    public SpriteRenderer mainRenderer => (renderers?.Length > 0)? renderers[0] : null;
     public float everyFrameTime;
     public int currentAnimFrame;
     public string currentAnim;
+    public float ftScale = 1;
     public bool isStop;
     public bool loop;
     public bool autoPlay;
@@ -25,8 +28,13 @@ public class CommonAnimControl : MonoBehaviour
             currentAnimFrame = 0;
         }
     }
-    void Start(){
-        render.material = new Material(Shader.Find("Sprites/Default"));
+    void Start()
+    {
+        foreach (var render in renderers)
+        {
+            if (rendererMat == null) render.material = new Material(Shader.Find("Sprites/Default"));
+            else render.material = rendererMat;
+        }
     }
     protected virtual string GetSpriteName()
     {
@@ -41,7 +49,7 @@ public class CommonAnimControl : MonoBehaviour
     void Update()
     {
         if (isStop || isPause) return;
-        if (Time.time - lastFrameTime < everyFrameTime) return;
+        if (Time.time - lastFrameTime < everyFrameTime * ftScale) return;
         lastFrameTime = Time.time;
         string sn = GetSpriteName();
         Sprite sprite = atlas.GetSprite(sn);
@@ -60,7 +68,7 @@ public class CommonAnimControl : MonoBehaviour
             }
             return;
         }
-        render.sprite = sprite;
+        foreach(var render in renderers) render.sprite = sprite;
         if (r) currentAnimFrame--;
         else currentAnimFrame++;
         OnUpdateSprite();
@@ -114,7 +122,7 @@ public class CommonAnimControl : MonoBehaviour
     }
     public IEnumerator WaitToFrame(int tf)
     {
-        while(currentAnimFrame < tf && !isStop) yield return null;
+        while (currentAnimFrame < tf && !isStop) yield return null;
     }
     public void Pause()
     {

@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 4163676948919347422}
   - component: {fileID: 3723922270372425041}
   - component: {fileID: 1647085069528805439}
-  - component: {fileID: 6486565501805366548}
   - component: {fileID: 8329930023109116012}
   - component: {fileID: 429353971817232176}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb8fb58de5a773f45b116cc6e55c532e, type: 2}
+  - {fileID: 2100000, guid: 77a00cb861c2a464ca77742c45018c14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,11 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df6400b3bb8f34499ecbe4c639f6d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rendererMat: {fileID: 2100000, guid: 77a00cb861c2a464ca77742c45018c14, type: 2}
   atlas: {fileID: 4343727234628468602, guid: 6bb1f9216fc25ad48824415c52048263, type: 2}
-  render: {fileID: 4163676948919347422}
+  renderers:
+  - {fileID: 4163676948919347422}
   everyFrameTime: 0.05
   currentAnimFrame: 0
   currentAnim: idle
+  ftScale: 1
   isStop: 0
   loop: 1
   autoPlay: 1
@@ -120,7 +122,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -193,20 +195,6 @@ PolygonCollider2D:
       - {x: 0.13, y: 0.59999996}
       - {x: 0.14, y: 0.61}
       - {x: 0.099999994, y: 0.62}
---- !u!114 &6486565501805366548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583596467152477846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d932fb2a64be74a9566271e7f0ded5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 2147483647
-  control: {fileID: 8961771096741775230}
 --- !u!114 &8329930023109116012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,16 +224,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioPlayerPrefab: {fileID: 0}
-  blockHitPrefab: {fileID: 4002828980575388335}
-  strikeNailPrefab: {fileID: 4002828980575388335}
-  slashImpactPrefab: {fileID: 4002828980575388335}
-  fireballHitPrefab: {fileID: 4002828980575388335}
-  sharpShadowImpactPrefab: {fileID: 4002828980575388335}
-  corpseSplatPrefab: {fileID: 4002828980575388335}
+  blockHitPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
+  strikeNailPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
+  slashImpactPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
+  fireballHitPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
+  sharpShadowImpactPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
+  corpseSplatPrefab: {fileID: 6251812844124309798, guid: ad61d2eaf61e72b45ac69aef56b24af0, type: 3}
   smallGeoPrefab: {fileID: 0}
   mediumGeoPrefab: {fileID: 0}
   largeGeoPrefab: {fileID: 0}
-  hp: 2147483647
+  hp: 1000
   enemyType: 0
   effectOrigin: {x: 0, y: 0, z: 0}
   ignoreKillAll: 0
@@ -294,7 +282,9 @@ GameObject:
   - component: {fileID: 5427616929050850263}
   - component: {fileID: 5259821817505291269}
   - component: {fileID: 2811284852927165701}
-  m_Layer: 0
+  - component: {fileID: 7009164485401431464}
+  - component: {fileID: 6709770314517348073}
+  m_Layer: 11
   m_Name: Collector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +306,6 @@ Transform:
   - {fileID: 5183343693861490211}
   - {fileID: 8631345792803969637}
   - {fileID: 7398764077737159249}
-  - {fileID: 773711842984526367}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -368,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballSpeed: 20
+  audioPlayer: {fileID: 7009164485401431464}
   fireballSP: {fileID: 6197960099994092017}
   fireballPF: {fileID: 7296453374235438684, guid: fee97e82761ca2f4ba67358d6a619e92, type: 3}
   dashEffect: {fileID: 3387924803311339095}
@@ -379,6 +369,7 @@ MonoBehaviour:
   laserBeam: {fileID: 2791134772029762663}
   laserLoad: {fileID: 8536687400465507186}
   rig: {fileID: 161229676198273501}
+  hm: {fileID: 429353971817232176}
   facingRight: 1
   dashSpeed: 50
   spinSpeed: 10
@@ -393,9 +384,9 @@ MonoBehaviour:
   stunHitCount: 8
   maxHP: 1000
   phase: 0
-  canDamage: 0
   lastHit: 0
   willTeleport: 0
+  canDamage: 0
   targetPos: {x: 0, y: 0, z: 0}
   heroPos: {x: 0, y: 0, z: 0}
 --- !u!114 &5427616929050850263
@@ -445,6 +436,126 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d819901be31870d4794044778b94554a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7009164485401431464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834086903892695066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6ba9c76d81f6c409ecb9bae4d9e9ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash_release: {fileID: 8300000, guid: fa8a103c03f012e4787c62275e5d76a9, type: 3}
+  die: {fileID: 8300000, guid: 0473668357dc4c74fb3e1353e9abc55e, type: 3}
+  energy_charge: {fileID: 8300000, guid: bf75a29ee155a834ca07328a51f03ba4, type: 3}
+  energy_release: {fileID: 8300000, guid: 7004b383eb54bfc408980a7fe529ba64, type: 3}
+  spin_charge: {fileID: 8300000, guid: b1e1f609c3e6a1a4298f01c760c78b15, type: 3}
+  spin_release: {fileID: 8300000, guid: 88ebe60e103ac9a4cb8734529407fb47, type: 3}
+  laser_charge: {fileID: 8300000, guid: a5ead470b97132844b2fd1f7c7e41383, type: 3}
+  laser_release: {fileID: 8300000, guid: c3ca93d4e02e0b2408f0c3525664cdc2, type: 3}
+  fire_release: {fileID: 8300000, guid: 4cadb2b593f909f47980bc9cabf4445f, type: 3}
+  potion_drink_loop: {fileID: 8300000, guid: 5ede33b7e1f451346be5cdc4167a3818, type: 3}
+  potion_grab: {fileID: 8300000, guid: ef6da6f66808cf0418a16228c9515910, type: 3}
+  audioSource: {fileID: 6709770314517348073}
+--- !u!82 &6709770314517348073
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834086903892695066}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3943565889045552534
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +567,7 @@ GameObject:
   - component: {fileID: 6329290529788228747}
   - component: {fileID: 1749095936094478649}
   - component: {fileID: 8536687400465507186}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: laserLoad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,46 +651,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62890e8a2a92e3f42ba02b7d464fce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rendererMat: {fileID: 0}
   atlas: {fileID: 4343727234628468602, guid: 5011e7d90d4e0fe4bbac55cf80007d59, type: 2}
-  render: {fileID: 1749095936094478649}
+  renderers:
+  - {fileID: 1749095936094478649}
   everyFrameTime: 0.05
   currentAnimFrame: 0
   currentAnim: fxLaserLoad
+  ftScale: 1
   isStop: 0
   loop: 1
   autoPlay: 1
   isPause: 0
   r: 0
---- !u!1 &4002828980575388335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 773711842984526367}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &773711842984526367
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4002828980575388335}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5243029, y: 0.22789209, z: -2.3314455}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6137918347871347593}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4484220087774679359
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +676,7 @@ GameObject:
   - component: {fileID: 1504021253880213082}
   - component: {fileID: 3387924803311339095}
   - component: {fileID: 3003212268812379440}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: dashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,11 +760,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62890e8a2a92e3f42ba02b7d464fce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rendererMat: {fileID: 0}
   atlas: {fileID: 4343727234628468602, guid: 5011e7d90d4e0fe4bbac55cf80007d59, type: 2}
-  render: {fileID: 1504021253880213082}
+  renderers:
+  - {fileID: 1504021253880213082}
   everyFrameTime: 0.0125
   currentAnimFrame: 0
   currentAnim: fxCollectorDash
+  ftScale: 1
   isStop: 0
   loop: 0
   autoPlay: 1
@@ -699,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animControl: {fileID: 3387924803311339095}
+  isDestroy: 0
 --- !u!1 &5625755665471537134
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,8 +800,8 @@ GameObject:
   - component: {fileID: 6100064847368032668}
   - component: {fileID: 467099590564518495}
   - component: {fileID: 236546076886609180}
-  - component: {fileID: 7636278601410719793}
-  m_Layer: 0
+  - component: {fileID: 1293496554390303963}
+  m_Layer: 11
   m_Name: laserBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,11 +834,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62890e8a2a92e3f42ba02b7d464fce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rendererMat: {fileID: 0}
   atlas: {fileID: 4343727234628468602, guid: 5011e7d90d4e0fe4bbac55cf80007d59, type: 2}
-  render: {fileID: 6100064847368032668}
+  renderers:
+  - {fileID: 6100064847368032668}
   everyFrameTime: 0.05
   currentAnimFrame: 5
   currentAnim: fxLaserBeam
+  ftScale: 1
   isStop: 0
   loop: 0
   autoPlay: 0
@@ -820,6 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animControl: {fileID: 2791134772029762663}
+  isDestroy: 0
 --- !u!61 &236546076886609180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -846,7 +938,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.93593097, y: 8.467967}
   m_EdgeRadius: 0
---- !u!114 &7636278601410719793
+--- !u!114 &1293496554390303963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -855,12 +947,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5625755665471537134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3065fec2ab146447982f2a4095f05f0, type: 3}
+  m_Script: {fileID: -463996770, guid: efb950b54ceb2a3459628d704c691a47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageDealt: 1
   hazardType: 0
   shadowDashHazard: 0
+  resetOnEnable: 0
 --- !u!1 &6083461788684031122
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +963,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5183343693861490211}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -902,7 +995,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7398764077737159249}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: fbp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

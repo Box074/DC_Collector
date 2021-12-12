@@ -19,12 +19,14 @@ public class PhaseControl : MonoBehaviour
     {
         if (phaseTests != null)
         {
-            for(int i = 0; i < phaseTests.Length; i++){
+            for (int i = 0; i < phaseTests.Length; i++)
+            {
                 var pt = phaseTests[i];
-                if(control.drinkCount >= pt.needDrinkCount)
+                if (control.drinkCount >= pt.needDrinkCount)
                 {
-                    if(control.hp <= pt.maxHealth){
-                        control.phase = i;
+                    if (control.hp <= pt.maxHealth)
+                    {
+                        if(control.phase < i) control.phase = i;
                     }
                 }
             }

@@ -5,12 +5,15 @@ using UnityEngine;
 public class DisableOnAnimFinish : MonoBehaviour
 {
     public CommonAnimControl animControl;
-    private void Update() {
-        if(animControl!=null)
+    public bool isDestroy;
+    private void Update()
+    {
+        if (animControl != null)
         {
-            if(animControl.isStop)
+            if (animControl.isStop)
             {
-                gameObject.SetActive(false);
+                if (!isDestroy) gameObject.SetActive(false);
+                else Destroy(gameObject);
             }
         }
     }

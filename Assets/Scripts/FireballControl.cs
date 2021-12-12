@@ -9,6 +9,13 @@ public class FireballControl : MonoBehaviour
     private void FixedUpdate(){
         rig.velocity = dir;
     }
+    private void OnEnable() {
+        Invoke("DestroyThis", 1.5f);
+    }
+    private void DestroyThis()
+    {
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.layer == 8)
         {

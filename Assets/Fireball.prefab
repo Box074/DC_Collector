@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2737117238679564330}
   - component: {fileID: 659397165554443419}
   - component: {fileID: 1133251593456474337}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,9 +79,9 @@ GameObject:
   - component: {fileID: 7829277284140185846}
   - component: {fileID: 373432976946341400}
   - component: {fileID: 6305408912026572367}
-  - component: {fileID: 5324623735615288124}
   - component: {fileID: 3157299691588190261}
-  m_Layer: 0
+  - component: {fileID: 702409106871515739}
+  m_Layer: 11
   m_Name: anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,31 +165,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62890e8a2a92e3f42ba02b7d464fce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rendererMat: {fileID: 0}
   atlas: {fileID: 4343727234628468602, guid: 5011e7d90d4e0fe4bbac55cf80007d59, type: 2}
-  render: {fileID: 373432976946341400}
-  everyFrameTime: 0.05
+  renderers:
+  - {fileID: 373432976946341400}
+  everyFrameTime: 0.005
   currentAnimFrame: 0
   currentAnim: fxEnergyBall
+  ftScale: 1
   isStop: 0
   loop: 1
   autoPlay: 1
   isPause: 0
   r: 0
---- !u!114 &5324623735615288124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8699710295041462673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3065fec2ab146447982f2a4095f05f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageDealt: 1
-  hazardType: 0
-  shadowDashHazard: 0
 --- !u!58 &3157299691588190261
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,3 +194,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &702409106871515739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8699710295041462673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -463996770, guid: efb950b54ceb2a3459628d704c691a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
+  hazardType: 0
+  shadowDashHazard: 0
+  resetOnEnable: 0

@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 8192
+      m_MaxTextureSize: 2048
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -44,7 +44,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: f7c146bd6eda02346a0dc6a28ac1433a, type: 3}
-    totalSpriteSurfaceArea: 25224500
+    totalSpriteSurfaceArea: 25424500
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -123,6 +123,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 174fd0557bf5a7d4997b77d59e2f0afe, type: 3}
   - {fileID: 21300000, guid: 3513f475d03684142b7682d90563f96c, type: 3}
   - {fileID: 21300000, guid: 66e72085e68ebbb458f4977a4ca0c971, type: 3}
+  - {fileID: 21300000, guid: ebe48fa5574f3bb46a98ccda38e15dc1, type: 3}
   - {fileID: 21300000, guid: 65b4c5d53736e4c4c8f707f7b4ef53d3, type: 3}
   - {fileID: 21300000, guid: 907be7d547a61e94f996f4c8cb8bf0eb, type: 3}
   - {fileID: 21300000, guid: 849803069d641ec4ba189b1a0948c213, type: 3}
@@ -132,6 +133,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0a4dad26432c5c34993155ec41695ff6, type: 3}
   - {fileID: 21300000, guid: 1dec1546e6e59414186e896de9e17249, type: 3}
   - {fileID: 21300000, guid: a4f9894629a1da0428797bae95be0d52, type: 3}
+  - {fileID: 21300000, guid: 59af6d5614d9f474cadb34f02ebe697a, type: 3}
   - {fileID: 21300000, guid: 78951e56fcbb6e64a95efdcc167316a8, type: 3}
   - {fileID: 21300000, guid: ac09c766a0c291843b04ea502f75642b, type: 3}
   - {fileID: 21300000, guid: ab79ba866f6de424aa3b87a84526ba80, type: 3}
@@ -181,6 +183,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0847ec2aba9664a43a30151b4ad33d84, type: 3}
   - {fileID: 21300000, guid: 95c6546a5826ecd4181cf3d6a442365e, type: 3}
   - {fileID: 21300000, guid: 37c7386a70e38c943a7e5bacbfeddb5d, type: 3}
+  - {fileID: 21300000, guid: 06a2786a27affc146baa291b28128c8e, type: 3}
   - {fileID: 21300000, guid: 0d9ebf7a593ffdf4e829ed16e19466b4, type: 3}
   - {fileID: 21300000, guid: 5f6cbcaa29c96444d93334d6578321d4, type: 3}
   - {fileID: 21300000, guid: 87f29eca2b9eca845aa649f3ab06d5b6, type: 3}
@@ -190,6 +193,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 1de9d14b25d261343b8392edfb442d5a, type: 3}
   - {fileID: 21300000, guid: d90ae55bf0bb93a4094f83ccb7dd3f34, type: 3}
   - {fileID: 21300000, guid: b7cc937b0fa18df4d8643d7201f343f0, type: 3}
+  - {fileID: 21300000, guid: 823816abeb60555488d44b8b788fe9a3, type: 3}
   - {fileID: 21300000, guid: 8e9921bbe27aef34eaa13f27194dcfd2, type: 3}
   - {fileID: 21300000, guid: 9e3667db80108424a9520d06b4f2f64d, type: 3}
   - {fileID: 21300000, guid: 29132fdba64019845823cdf11f3214c8, type: 3}
@@ -215,6 +219,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 163e35bd9b16c6d44bbe4020935fb9e5, type: 3}
   - {fileID: 21300000, guid: d8fd76dd63acfce4f80ea527cf825633, type: 3}
   - {fileID: 21300000, guid: 4da28afda43529d47bd25ca19d0ac2c7, type: 3}
+  - {fileID: 21300000, guid: 2533ad0ede41e344297fe96538ab1fe3, type: 3}
   - {fileID: 21300000, guid: 2236df0ed79181145b8fc0b0eecf0102, type: 3}
   - {fileID: 21300000, guid: e0aeb31e16fed9a479f487ccef0cae38, type: 3}
   - {fileID: 21300000, guid: ef5aa02eecda35f40aecef31ca58b0bb, type: 3}
@@ -318,6 +323,7 @@ SpriteAtlas:
   - fxCollectorStomp_0026-=-0-=-
   - fxLaserLoad_0015-=-0-=-
   - fxEnergyBall_0006-=-0-=-
+  - fxFugitiveAtk_0002-=-0-=-
   - fxGround_0008-=-0-=-
   - fxEnergyBall_0030-=-0-=-
   - fxLaserLoad_0020-=-0-=-
@@ -327,6 +333,7 @@ SpriteAtlas:
   - fxLaserLoad_0009-=-0-=-
   - fxLaserLoad_0040-=-0-=-
   - fxEnergyBall_0036-=-0-=-
+  - fxFugitiveAtk_0001-=-0-=-
   - fxEnergyBall_0016-=-0-=-
   - fxEnergyBall_0037-=-0-=-
   - fxEnergyBall_0005-=-0-=-
@@ -376,6 +383,7 @@ SpriteAtlas:
   - fxEnergyBall_0041-=-0-=-
   - fxEnergyBall_0023-=-0-=-
   - fxCollectorStomp_0009-=-0-=-
+  - fxFugitiveAtk_0004-=-0-=-
   - fxLaserBeam_0007-=-0-=-
   - fxLaserLoad_0017-=-0-=-
   - fxLaserLoad_0006-=-0-=-
@@ -385,6 +393,7 @@ SpriteAtlas:
   - fxLaserLoad_0051-=-0-=-
   - fxEnergyBall_0045-=-0-=-
   - fxLaserLoad_0022-=-0-=-
+  - fxFugitiveAtk_0000-=-0-=-
   - fxLaserLoad_0055-=-0-=-
   - fxLaserLoad_0045-=-0-=-
   - fxGround_0015-=-0-=-
@@ -410,6 +419,7 @@ SpriteAtlas:
   - fxEnergyBall_0054-=-0-=-
   - fxGround_0009-=-0-=-
   - fxCollectorStomp_0036-=-0-=-
+  - fxFugitiveAtk_0003-=-0-=-
   - fxCollectorStomp_0028-=-0-=-
   - fxLaserLoad_0001-=-0-=-
   - fxLaserLoad_0008-=-0-=-

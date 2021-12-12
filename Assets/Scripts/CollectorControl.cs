@@ -7,6 +7,7 @@ using UnityEngine;
 public class CollectorControl : MonoBehaviour
 {
     public float fireballSpeed;
+    public AudioPlayer audioPlayer;
     public GameObject fireballSP;
     public GameObject fireballPF;
     public EffectAnim dashEffect;
@@ -19,6 +20,7 @@ public class CollectorControl : MonoBehaviour
     public EffectAnim laserBeam;
     public EffectAnim laserLoad;
     public Rigidbody2D rig;
+    public HealthManager hm;
     public bool facingRight;
     public float dashSpeed;
     public float spinSpeed;
@@ -33,9 +35,9 @@ public class CollectorControl : MonoBehaviour
     public int stunHitCount;
     public int maxHP;
     public int phase;
-    public bool canDamage;
     public bool lastHit;
     public bool willTeleport;
+    public bool canDamage;
     public Vector3 targetPos;
     public Vector3 heroPos;
     Coroutine testC;
@@ -51,7 +53,7 @@ public class CollectorControl : MonoBehaviour
     }
     IEnumerator Fall(bool canLand = true)
     {
-        if (postitionControl.HitLand || !canFall) yield break;
+        if (postitionControl.HitLand || !canFall || postitionControl.keepOnLand) yield break;
         rig.isKinematic = false;
         postitionControl.colliderOn = true;
         postitionControl.testGround = true;
@@ -167,10 +169,10 @@ public class CollectorControl : MonoBehaviour
                     }
                 }
             }
-            animControl.render.color = c;
+            animControl.mainRenderer.color = c;
             yield return null;
         }
-        animControl.render.color = Color.white;
+        animControl.mainRenderer.color = Color.white;
         if (target != null)
         {
             SpriteRenderer r = target.GetComponent<SpriteRenderer>();
@@ -210,19 +212,22 @@ public class CollectorControl : MonoBehaviour
         if (hp > (int)(maxHP * 0.5f) || drinkCount > maxDrinkCount) yield break;
         postitionControl.colliderOn = false;
         canIdle = false;
-        if (drinkCount < maxDrinkCount)
+        if(drinkCount < maxDrinkCount)
         {
             canDamage = false;
         }
+        audioPlayer.Play(audioPlayer.potion_grab);
         yield return animControl.PlayWait("idleDrink");
         drinkCount++;
+        audioPlayer.PlayLoop(audioPlayer.potion_drink_loop);
         animControl.PlayLoop("drink");
         maxHP = maxHP + (maxHP / 2);
         int addhp = maxHP - hp;
         yield return new WaitForSeconds(3.5f);
+        audioPlayer.Stop();
         hp = hp + addhp;
         if (hp > maxHP) hp = maxHP;
-
+        
         yield return animControl.PlayWait("drinkIdle");
         canDamage = true;
         animControl.Play("idle");
@@ -231,12 +236,16 @@ public class CollectorControl : MonoBehaviour
     public void TurnLeft()
     {
         facingRight = false;
-        transform.localScale = new Vector3(-1, 1, 1);
+        var s = transform.localScale;
+        s.x = -Mathf.Abs(s.x);
+        transform.localScale = s;
     }
     public void TurnRight()
     {
         facingRight = true;
-        transform.localScale = new Vector3(1, 1, 1);
+        var s = transform.localScale;
+        s.x = Mathf.Abs(s.x);
+        transform.localScale = s;
     }
     public void TurnToTarget()
     {
@@ -259,9 +268,10 @@ public class CollectorControl : MonoBehaviour
         {
             TurnToTarget();
             rig.isKinematic = true;
+            audioPlayer.Play(audioPlayer.energy_charge);
             yield return animControl.PlayWait("idleAtkLoad");
             yield return animControl.PlayWait("atkLoad");
-
+            audioPlayer.Play(audioPlayer.energy_release);
             yield return animControl.PlayWait("atk");
             rig.isKinematic = false;
         }
@@ -281,6 +291,7 @@ public class CollectorControl : MonoBehaviour
         rig.isKinematic = true;
         yield return null;
 
+        audioPlayer.Play(audioPlayer.dash_release);
 
         animControl.PlayLoop("dash");
         dashEffect.gameObject.SetActive(true);
@@ -302,9 +313,11 @@ public class CollectorControl : MonoBehaviour
         canFall = false;
         postitionControl.colliderOn = true;
         postitionControl.testGround = true;
+        audioPlayer.Play(audioPlayer.spin_charge);
         yield return animControl.PlayWait("idleSpinLoad");
         yield return animControl.PlayWait("spinLoad");
         animControl.PlayLoop("spin");
+        audioPlayer.PlayLoop(audioPlayer.spin_release);
         float st = Time.time;
         float spinTime = UnityEngine.Random.Range(3.5f, 5.5f);
         yield return null;
@@ -332,22 +345,26 @@ public class CollectorControl : MonoBehaviour
             yield return null;
         }
         rig.velocity = Vector2.zero;
+        animControl.ftScale = 0.5f;
+        audioPlayer.Stop();
         animControl.PlayR("idleSpinLoad", 16);
         yield return animControl.Wait("idleSpinLoad");
+        animControl.ftScale = 1;
         canIdle = true;
         canFall = true;
     }
     IEnumerator Death()
     {
+        rig.isKinematic = true;
         postitionControl.colliderOn = false;
         canIdle = false;
         canFall = false;
         animControl.Stop();
+        audioPlayer.Play(audioPlayer.die);
         yield return animControl.PlayWait("lethalHit");
         yield return animControl.PlayWait("lethalHitDeathIdle");
         animControl.PlayLoop("deathIdle");
         OnDeath?.Invoke();
-        Destroy(this);
     }
     IEnumerator Fireball(){
         postitionControl.keepOnLand = true;
@@ -356,6 +373,7 @@ public class CollectorControl : MonoBehaviour
         animControl.PlayLoop("ball");
         for(int i = 0; i< UnityEngine.Random.Range(10, 25); i++)
         {
+            audioPlayer.Play(audioPlayer.fire_release);
             GameObject fb = Instantiate(fireballPF);
             if (!Application.isEditor) fb.layer = 11;
             fb.transform.position = fireballSP.transform.position;
@@ -384,7 +402,7 @@ public class CollectorControl : MonoBehaviour
         animControl.Play("idleLaserLoad");
         yield return null;
         while (animControl.currentAnimFrame < 16) yield return null;
-        rig.velocity = new Vector2(0, 1f);
+        rig.velocity = new Vector2(0, 3f);
         yield return animControl.Wait();
         rig.velocity = Vector2.zero;
         animControl.PlayLoop("laserLoad");
@@ -398,15 +416,17 @@ public class CollectorControl : MonoBehaviour
                 transform.position.y - target.transform.position.y < 3
                 )
             {
-                if(Time.time - bt > 3) break;
+                if(!postitionControl.HitTop) bt = Time.time;
+                if(Time.time - bt > 0.75f) break;
                 transform.position = Vector2.MoveTowards(transform.position, 
                 target.transform.position + new Vector3(0, 3, 0),
-                    0.1f);
+                    0.2f);
                 yield return null;
             }
             yield return new WaitForSeconds(wt);
             animControl.Play("laserBeam");
             yield return animControl.WaitToFrame(5);
+            audioPlayer.Play(audioPlayer.laser_release);
             laserLoad.gameObject.SetActive(false);
             laserBeam.gameObject.SetActive(true);
             laserBeam.Play("fxLaserBeam");
@@ -457,7 +477,7 @@ public class CollectorControl : MonoBehaviour
     IEnumerator AttackChoose()
     {
         TurnToTarget();
-        switch (phase)
+        switch (drinkCount)
         {
             case 0:
                 yield return ChooseAtk0();
@@ -483,8 +503,7 @@ public class CollectorControl : MonoBehaviour
     {
         while (true)
         {
-            yield return Fall();
-            yield return Teleport();
+            postitionControl.keepOnLand = true;
             yield return Walk();
             yield return Drink();
             yield return AttackChoose();
@@ -495,14 +514,25 @@ public class CollectorControl : MonoBehaviour
     // Update is called once per frame
     void OnEnable()
     {
-        if(!Application.isEditor) gameObject.layer = 11;
+        hm.hp = int.MaxValue;
+        canDamage = true;
     }
     public void WakeUp()
     {
         testC = StartCoroutine(Test());
     }
+    private void UpdateHP()
+    {
+        int h = int.MaxValue - hm.hp;
+        if(canDamage)
+        {
+            hp -= h;
+        }
+        hm.hp = int.MaxValue;
+    }
     void Update()
     {
+        UpdateHP();
         if (canIdle)
         {
             if (animControl.isStop)
@@ -517,9 +547,10 @@ public class CollectorControl : MonoBehaviour
                 lastHit = true;
                 hp = 1;
             }
-            else if (hp != -1000)
+            else if (hp != -1000 && !hm.isDead)
             {
                 hp = -1000;
+                hm.isDead = true;
                 StopCoroutine(testC);
                 StartCoroutine(Death());
             }
