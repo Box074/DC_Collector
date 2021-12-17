@@ -35,9 +35,14 @@ public class HeroTestAreaControl : MonoBehaviour
     private IEnumerator WakeUp()
     {
         yield return null;
+        collectorControl.hm.hp = int.MaxValue;
         collectorControl.target = hero;
+        collectorControl.canIdle = true;
+        collectorAnim.PlayLoop("idle");
         phaseControl.currentPhase = setPhaseTo;
-        yield return collectorAnim.PlayWait("laugh");
+        float st = Time.time;
+        while(Time.time - st < 5 && !collectorControl.firstHit) yield return null;
+        yield return new WaitForSeconds(0.5f);
         collectorControl.WakeUp();
         gameObject.SetActive(false);
     }

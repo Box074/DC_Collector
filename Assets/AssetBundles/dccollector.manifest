@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3487607763
+CRC: 828850156
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d17f287450367bf1a3b3c7a7a4addf16
+    Hash: 9bae749370ecbac7df88a8bc3dc532b8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1574fa0418991e5dd030ab57a67937f0
+    Hash: c8298de3d135bac60bb3ab5bd880cf41
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -54,13 +54,17 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: d819901be31870d4794044778b94554a, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: e6ed1fb0b3830a04eab99b4e0271aa25, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 3df6400b3bb8f34499ecbe4c639f6d54, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a44214bf7c1876d4a8f19dae4d05faef, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6b6ba9c76d81f6c409ecb9bae4d9e9ee, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: cf27e2ff50872d746a1af3609717e34b, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 8d2879a8484657b4c94ad7a1a920b4c3, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 6b6ba9c76d81f6c409ecb9bae4d9e9ee, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -75,36 +79,43 @@ Assets:
 - Assets/Audio/enm_collector_potion_drink_loop.wav
 - Assets/Audio/enm_collector_vox2.wav
 - Assets/Audio/enm_collector_dash_release.wav
-- Assets/HKCollectorScene.prefab
+- Assets/Audio/active_slash_hit.wav
 - Assets/Texture2D/Effect.spriteatlas
-- Assets/Audio/enm_collector_laser_charge.wav
+- Assets/Texture2D/golemOrgue_1-=-0-=-.png
 - Assets/Audio/enm_collector_potion_grab.wav
-- Assets/HitEffect.prefab
 - Assets/Audio/enm_collector_drop_potion.wav
-- Assets/Audio/enm_collector_laser_release.wav
 - Assets/Audio/enm_collector_door_open.wav
 - Assets/Audio/enm_collector_vox1.wav
-- Assets/Audio/enm_collector_tp.wav
 - Assets/Audio/enm_collector_die.wav
 - Assets/Audio/enm_collector_door_close.wav
 - Assets/SpriteMat.mat
 - Assets/Audio/enm_collector_spin_charge.wav
 - Assets/Audio/enm_collector_spin_charge2.wav
 - Assets/Audio/enm_collector_energy_charge.wav
-- Assets/Audio/enm_collector_hit_slow.wav
 - Assets/Audio/enm_collector_fire_charge.wav
-- Assets/Audio/enm_collector_energy_release.wav
 - Assets/Texture2D/Collector.spriteatlas
 - Assets/CollectorMat.mat
 - Assets/Audio/enm_collector_stomp_release.wav
-- Assets/Audio/enm_collector_stomp_charge.wav
 - Assets/Audio/enm_collector_spin_release.wav
 - Assets/Audio/enm_collector_bomb_release.wav
 - Assets/Texture2D/CollectorIcon.png
+- Assets/HKCollectorScene.prefab
+- Assets/Audio/enm_collector_flame_loop.wav
+- Assets/PhaseTeleportPoint.prefab
+- Assets/Texture2D/golemOrgue_4-=-0-=-.png
+- Assets/Texture2D/golemOrgue_0-=-0-=-.png
+- Assets/Audio/enm_collector_laser_charge.wav
+- Assets/HitEffect.prefab
+- Assets/Texture2D/golemOrgue_3-=-0-=-.png
+- Assets/Audio/enm_collector_laser_release.wav
+- Assets/SPDS.shader
+- Assets/Audio/enm_collector_tp.wav
+- Assets/Audio/enm_collector_hit_slow.wav
+- Assets/Audio/enm_collector_energy_release.wav
+- Assets/Audio/enm_collector_stomp_charge.wav
 - Assets/Collector.prefab
+- Assets/Texture2D/golemOrgue_2-=-0-=-.png
 - Assets/Audio/enm_collector_spin_release2.wav
 - Assets/CollectorS.shader
-- Assets/Audio/enm_collector_flame_loop.wav
 - Assets/Fireball.prefab
-- Assets/PhaseTeleportPoint.prefab
 Dependencies: []
